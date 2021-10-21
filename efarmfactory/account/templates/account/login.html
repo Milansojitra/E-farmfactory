@@ -1,0 +1,36 @@
+{% extends 'account/base.html' %}
+{% load  static  %}
+
+    {% block title %}
+    {% endblock title %}
+        
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+    <div class="main-w3layouts wrapper">
+		<h1>Login here</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				
+	{% include 'account/_flash_messages.html'%}
+				<form method="post">
+                    {% csrf_token%}
+      
+						<div class="form-group">
+							<input class="form-control form-control-sm" type="text" name="username" value="{{data.username}}" placeholder={{form.username.label}}>
+						</div>
+
+						<div class="form-group">
+								<input class="form-control form-control-sm" type="password" name="password" placeholder={{form.password.label}}>
+						</div>              
+					<div class="wthree-text">
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGNUP">
+                </form>
+                
+				<p>Don't have an Account? <a href="{%url 'register'%}"> Signin Now!</a></p>
+			</div>
+		</div>
+{% endblock content %}
+    

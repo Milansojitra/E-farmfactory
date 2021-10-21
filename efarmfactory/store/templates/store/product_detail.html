@@ -1,0 +1,38 @@
+{%extends "account/base.html" %}
+{% load static %}
+{% block content%}
+
+
+<div class="row">
+	<div  class="col-lg-4">
+		<img class="thumbnail img-thumbnail" src="{{product.product_image.url}}" alt="image">
+	</div>
+	<div class="col-lg-8">
+		
+		<div class="box-element product">
+        <h3><strong>{{product.name}}</strong></h3>
+        <h4>Quantity: {{product.quantity}}</h4>
+		<h4>Price: {{product.price}}</h4>
+		<h4>City: {{product.city}}</h4>
+		{% for t in product.tags.all %}
+        <a class="ml-1" href="{% url 'product-tag-list' t %}">{{t}}</a>
+        {% endfor%}  
+		<hr>
+        <button data-product={{product.id}} data-action="add"   class="btn btn-outline-success add-btn mr-2 update-cart">add to cart</button>
+		</div>
+	</div>
+	<div  class="col-lg-12">
+		<div class="box-element product">
+			<strong>Description: </strong>
+	
+		{% if product.description %}
+		{{product.description|safe}}
+		{%else%}
+		No descriptions available 
+		{%endif %}
+	</div>
+	</div>
+	
+</div>
+
+{%endblock content%}

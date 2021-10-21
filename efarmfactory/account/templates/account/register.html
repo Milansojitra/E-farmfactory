@@ -1,0 +1,36 @@
+{% extends 'account/base.html' %}
+{% load  static  %}
+
+    {% block title %}
+    {% endblock title %}
+        
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+    <div class="main-w3layouts wrapper">
+		<h1>SignUp here</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				{% include 'account/_flash_messages.html' %}
+
+				<form method="post">
+                    {% csrf_token %}
+					<input class="text" type="text" name="username" placeholder="Username" required="">
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="password1" placeholder="Confirm Password" required="">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="text clear"> </div>
+					</div>
+					<input class="text" type="submit" value="SIGNUP">
+                </form>
+                
+				<p>Have an Account? <a href="{%url 'login'%}"> Login Now!</a></p>
+			</div>
+		</div>
+{% endblock content %}
+    

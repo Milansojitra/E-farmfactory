@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+validate-email = "*"
+django-taggit = "*"
+six = "*"
+pillow = "*"
+django-import-export = "*"
+djangorestframework = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

@@ -1,0 +1,10 @@
+{%extends "account/base.html" %}
+{%block content%}
+{% include 'account/_flash_messages.html' %}
+   <div class='content-section pt-3 ml-4'>
+       <div class='border-top'>
+          Do you want to log in back ??<a class='ml-4' href="{%url 'login' %}">click here</a>
+       </div>
+   
+   </div>
+{%endblock content%}

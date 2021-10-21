@@ -1,0 +1,37 @@
+{%extends "account/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="box-element">
+			<div class="cart-row">
+				<div style="flex:2">     </div>
+				<div style="flex:1"><strong> Product</strong></div>
+				<div style="flex:2"><strong> From</strong></div>
+				<div style="flex:1"><strong> Price</strong></div>
+				<div style="flex:1"><strong> Quantity</strong></div>
+				<div style="flex:1"><strong> Total</strong></div>
+				<div style="flex:1"><strong></strong></div>
+			</div>
+			{% for item in items %}
+			<div class="cart-row">
+				<div style="flex:2"> <a href="{% url 'product-detail' item.product.id %}" > <img class="row-image" src="{{item.product.product_image.url}}"> </a></div>
+				<div style="flex:1"><p>{{item.product.name}}</p></div>
+				<div style="flex:2"><p>{{item.product}}</p></div>
+				<div style="flex:1"><p>{{item.product.price}}</p></div>
+				<div style="flex:1">
+					<p>{{item.product.quantity}} kg</p>
+				</div>
+				<div style="flex:1"><p>{{item.get_payable_amount}}</p></div>
+				<div class="quantity">
+				<div style="flex:1"><button data-product={{item.product.id}} data-action="remove"  class="btn btn-outline-danger add-btn mr-2 update-cart">remove</button>
+				</div>
+			</div></div>
+			{%endfor%}
+		<br>
+		{{Order.get_total_amount}}
+	</div>
+</div>
+
+{%endblock content%}

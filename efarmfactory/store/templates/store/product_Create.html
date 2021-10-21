@@ -1,0 +1,20 @@
+{%extends "account/base.html" %}
+{% load static %}
+{% load crispy_forms_tags%}
+{% block content %}
+{{ form.media }} 
+<div class="row">
+	<div class="col-lg-12">
+		<div class="box-element">
+		
+           <form method='post' enctype="multipart/form-data">
+           {%csrf_token%}
+           <filedset class='form-group' style='width:800px'>
+               {{form|crispy|safe}}
+            </fieldset>
+             <div class='forn-group mb-2'>
+           <button class='btn btn-outline-info mr-3' type='submit'>Post</button>
+           </div>
+           </form>
+   
+{%endblock content%}

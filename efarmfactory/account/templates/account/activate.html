@@ -1,0 +1,10 @@
+
+{% autoescape off %}
+    
+    Hello {{user.username}}
+
+    click below link to join efarmfactory.
+
+    http://{{domain}}{%url 'activate' uidb64=uid token=token %}
+
+{% endautoescape %}

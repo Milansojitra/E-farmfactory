@@ -1,0 +1,49 @@
+{%extends "account/base.html" %}
+{% load static %}
+{% block head %}
+<script>
+  function testVariable()
+  {
+  var strText = document.getElementById("textone").value;   var result = strText ; 
+  location.href='{% url "store-search"  1234 %}'.replace(/1234/, strText.toString());
+    }
+  </script>
+{%endblock head %}
+{% block content%}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  <input class="form-control mr-sm-2 col-lg-3 " type="text" id="textone" />
+  <button class="btn btn-outline-success my-2 my-sm-0" onclick="testVariable()">Search</button> 
+  <br /> <span id="spanResult"> </span>
+	</div>
+	
+  </nav>
+
+{% if products %}
+
+<div class="row">
+	{% for product in products %}
+	<div class="col-lg-4">
+        <img class="thumbnail" src="{{product.product_image.url}}" alt="image">
+		<div class="box-element product">
+        <h5><strong>{{product.name}}</strong></h5>
+        <h6><strong>Quantity:</strong> {{product.quantity}} unit</h6>
+		<h6><strong>Price: </strong>{{product.price}}/unit <strong>Rs.</strong></h6>
+		<h6><strong>City : </strong>{{product.city}}</h6>
+		
+		<hr>
+        <a href="{% url 'product-detail' product.id %}" class="btn btn-outline-primary add-btn">Detail</a>
+        <button data-product={{product.id}} data-action="add"   class="btn btn-outline-success add-btn mr-2 update-cart">add to cart</button>
+		</div>
+	</div>
+
+	{% endfor %}
+	
+	{% else %}
+	<h2>Not found any match</h2>
+	{% endif %}
+</div>
+
+{%endblock content%}
